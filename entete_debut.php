@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- created by OSTON CODE CYPHER -->
-    <!--Support/subscribe my channel @ youtube.com/ostoncodecypher -->
-      <title>Register</title>
+      <title>Accueil</title>
       <meta name="viewport" content="width=device-width,initial-scale=1.0">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -13,9 +11,11 @@
 
   <header class="">
       <div class="navbar-fixed">
-          <nav class="nav-wrapper blue">
+          <nav style="height:150px;" class="nav-wrapper blue">
               <div class="container">
-                  <a href="#!" class="brand-logo center">Vérif&Quations</a>
+                  <h1 style="margin-left:40%; margin-top:1%; font-size:40px;">Vérif&Quations </h1>
+                  <h2 style="margin-left:40%; font-size:30px;">Réussi ton équation !</h2>
+                  
                   <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                   <ul class="right hide-on-med-and-down">
                       <!-- Eléments du menu -->
