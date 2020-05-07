@@ -1,6 +1,9 @@
 main{
 	margin-top: 100px;
 }
+.main_container{
+	padding-right: 10px;
+}
 .equation{
 	height: 100px;
 	width: 100%;
