@@ -8,9 +8,22 @@ function addinput(number, ligne){
             break;
         default:
             input.placeholder = "Entrez votre " + number + "eme ligne";
-   }
+    }
+    var div = document.createElement("div");
+    div.id = "check";
+    div.style = "position: absolute;";
+    var a = document.createElement("a");
+    a.id = "valid"
+    var i = document.createElement("i");
+    i.className = "material-icons";
+    i.innerHTML = "check";
     var select = "." + ligne;
+
     document.querySelector(select).appendChild(input);
+    document.querySelector(select).appendChild(div);
+    document.getElementById("check").appendChild(a);
+    document.getElementById("valid").appendChild(i);
+
 }
 
 function addrow(number){
