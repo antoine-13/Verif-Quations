@@ -1,0 +1,33 @@
+main{
+	margin-top: 100px;
+}
+.equation{
+	height: 100px;
+	width: 100%;
+	margin: 0;
+	padding: 10px;
+}
+.reponse{
+	height: auto;
+	padding: 10px;
+	margin-top: 20px;
+	width: 100%;
+}
+.solution{
+	height: 500px;
+}
+.main_text{
+	margin-top: 5px;
+
+	color: #0d47a1;
+}
+.col .row{
+	margin-left: 0;
+}
+.titre{
+	margin: 0;
+}
+.reponse .row{
+	width: 100%;
+	margin-right: 0;
+}
