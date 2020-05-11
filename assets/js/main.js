@@ -76,6 +76,8 @@ document.getElementById("add").addEventListener("click", function() {
 document.getElementById("submit").addEventListener("click", function() {
     document.querySelector(".add_line").style.opacity = "0";
     var equation = document.getElementById("equation").value;
+    document.querySelector(".main_box").className = "col s6 main_box";
+    document.querySelector(".solution").style.display = "block";
     document.getElementById('value_equa').innerHTML = "Ton equation est : " + equation;
     var valeurs = split_equation(equation);
     var result = calc_sol(valeurs);

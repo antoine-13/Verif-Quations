@@ -7,7 +7,7 @@
 <main>
     <div class="row main_container">
         <form method = "post" onsubmit="return false">
-            <div class="col s6 main_box">
+            <div class="col s12 main_box">
                 <div class="row  z-depth-3 equation">
                     <div class="row titre">
                         <span class="main_text">Entrez votre équation à résoudre :</span>
@@ -46,12 +46,12 @@
         </form>
 
         
-        <div class="col s6 z-depth-3 solution">
+        <div class="col s6 z-depth-3 solution fadein">
             <div class="row">
                 <span class="main_text">Solution :</span>
             </div>
             <div class="row">
-                <div class = 'row'>
+                <div class = 'row value_result'>
                     <span id='value_equa'></span>
                 </div>
                 <div class="container">
