@@ -6,7 +6,7 @@ function copyPara(){
     var string_para = "paragraph-" + num_paragraph;
     var para_prec = (num_paragraph-1)
     var string_para_prec = "paragraph-" + para_prec;
-    var query_para = "row row-master-contenu-cour fadein paragraph-" + num_paragraph;
+    var query_para = "row row-master-contenu-cours fadein paragraph-" + num_paragraph;
     var para = document.getElementById(string_para_prec).cloneNode(true);
     para.id = string_para;
     para.className = query_para;
@@ -35,7 +35,7 @@ function replaceInput(para_prec){
     p.style.padding = "10px";
     p.style.wordBreak = "break-word";
 
-    document.querySelector(".paragraph-" + para_prec + " .cour-text-area").appendChild(p);
+    document.querySelector(".paragraph-" + para_prec + " .cours-text-area").appendChild(p);
     document.querySelector(".paragraph-" + para_prec + " .div-sous-titre").appendChild(h3);
 
 
@@ -59,7 +59,7 @@ function modifButton(string_para_prec, para_prec){
     document.querySelector(".paragraph-" + num_paragraph + " .input-sous-titre-" + para_prec).id = "input-sous-titre-" + num_paragraph;
     document.querySelector(".paragraph-" + num_paragraph + " .input-sous-titre-" + para_prec).value = "";
     document.querySelector(".paragraph-" + num_paragraph + " .input-sous-titre-" + para_prec).className = "validate input-sous-titre-" + num_paragraph;
-    document.querySelector(".paragraph-" + num_paragraph + " textarea").value = "Entrez votre cours...";
+    document.querySelector(".paragraph-" + num_paragraph + " textarea").value = "Entrez votre courss...";
     document.querySelector(".paragraph-" + num_paragraph + " label").setAttribute('for', "input-sous-titre-" + num_paragraph);
     document.querySelector(".paragraph-"+ num_paragraph + " .delete").id = "delete-paragraph-" + num_paragraph;
 
@@ -99,7 +99,7 @@ function modifPara(id){
 function validModif(id){
     var tab = id.split('-');
     var para = tab[3];
-    
+
     document.querySelector(".paragraph-" + para + " .div-input-sous-titre").style.display = "none";
     document.querySelector(".paragraph-" + para + " h3").innerHTML = document.querySelector(".paragraph-" + para + " .div-input-sous-titre input").value;
     document.querySelector(".paragraph-" + para + " h3").style.display = "block";

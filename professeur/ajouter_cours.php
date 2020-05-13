@@ -4,18 +4,18 @@
 <!-- PROGRAMMER ICI -->
 <main id="main">
     <form metod="POST" action="">
-        <div class="row row-ajout-master-titre-cour">
-            <div class="col s12 col-ajout-titre-cour z-depth-3">
+        <div class="row row-ajout-master-titre-cours">
+            <div class="col s12 col-ajout-titre-cours z-depth-3">
                 <div class="row">
                     <div class="col s6">
                         <div class="row">
-                            <span>Entrez le titre de votre cour :</span>
+                            <span>Entrez le titre de votre cours :</span>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">chevron_right</i>
-                                <input id="Titre-cour" type="text" class="validate">
-                                <label for="Titre-cour">Titre</label>
+                                <input id="Titre-cours" type="text" class="validate">
+                                <label for="Titre-cours">Titre</label>
                             </div>
                         </div>
                     </div>
@@ -27,8 +27,8 @@
                 </div>
             </div>
         </div>
-        <div class="row row-master-contenu-cour paragraph-1" id="paragraph-1">
-            <div class="col s3 z-depth-3 contenu-cour cour-sous-titre">
+        <div class="row row-master-contenu-cours paragraph-1" id="paragraph-1">
+            <div class="col s3 z-depth-3 contenu-cours cours-sous-titre">
                 <div class="row">
                     <div class="col s12 div-sous-titre">
                         <div class="row">
@@ -53,15 +53,15 @@
                 </div>
 
             </div>
-            <div class="col s7 z-depth-3 contenu-cour cour-texte">
-                <div class="row cour">
-                    <div class="col s12 cour">
+            <div class="col s7 z-depth-3 contenu-cours cours-texte">
+                <div class="row cours">
+                    <div class="col s12 cours">
                         <div class="row">
                             <span>Contenue du paragraphe :</span>
                         </div>
-                        <div class="row cour-text-area">
+                        <div class="row cours-text-area">
                             
-                            <textarea id="cour-1" class="cour-1" name="story" cols="num" rows="num" placeholder="salut">Entrez votre cours...
+                            <textarea id="cours-1" class="cours-1" name="story" cols="num" rows="num" placeholder="salut">Entrez votre courss...
                                 
                             </textarea>
                             

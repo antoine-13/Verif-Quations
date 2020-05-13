@@ -74,18 +74,18 @@ main{
 }
 
 
-/* Page Ajouter Cours */
-.row-ajout-master-titre-cour{
+/* Page Ajouter courss */
+.row-ajout-master-titre-cours{
   height: auto;
   padding-left: 20px;
   padding-right: 20px;
 }
-.col-ajout-titre-cour{
+.col-ajout-titre-cours{
   height: 100%;
   padding-top: 10px !important;
 
 }
-.row-master-contenu-cour{
+.row-master-contenu-cours{
   height: 250px;
   margin-top: 80px;
   padding-left: 20px;
@@ -94,11 +94,11 @@ main{
   align-items: flex-end;
 }
 
-.contenu-cour{
+.contenu-cours{
   height: 100%;
   padding-top: 20px !important;
 }
-.cour-texte{
+.cours-texte{
   margin-left: 50px !important;
 }
 .master-validate-button{
@@ -107,7 +107,7 @@ main{
   align-items: flex-end;
   justify-content: flex-end;
 }
-.cour-sous-titre{
+.cours-sous-titre{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -130,7 +130,7 @@ main{
   justify-content: flex-end;
   padding: 0;
 }
-.cour-text-area{
+.cours-text-area{
   height: 100%;
   width: 100%;
 }
@@ -139,7 +139,7 @@ textarea {
   width: 100%;
   height: 70%;
 }
-.cour{
+.cours{
   height: 100%;
 }
 .delete-paragraph{
