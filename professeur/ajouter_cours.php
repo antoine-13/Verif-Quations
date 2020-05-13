@@ -1,9 +1,9 @@
 <!--Entete de début du site - menu bleu -->
-<?php include_once("../includes/entete_debut.php"); ?>
+<?php include_once("../includes/header.php"); ?>
 
 <!-- PROGRAMMER ICI -->
 <main id="main">
-    <form metod="POST" action="">
+    <form method="POST" action="#">
         <div class="row row-ajout-master-titre-cours">
             <div class="col s12 col-ajout-titre-cours z-depth-3">
                 <div class="row">
@@ -14,13 +14,13 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">chevron_right</i>
-                                <input id="Titre-cours" type="text" class="validate">
+                                <input id="Titre-cours" name="Titre-cours" type="text" class="validate">
                                 <label for="Titre-cours">Titre</label>
                             </div>
                         </div>
                     </div>
                     <div class="col s6 master-validate-button">   
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Publier
+                        <button class="btn waves-effect waves-light" type="submit" name="submit" id="submit">Publier
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
@@ -37,7 +37,7 @@
                         <div class="row div-input-sous-titre">
                             <div class="input-field col s10 ">
                                 <i class="material-icons prefix">chevron_right</i>
-                                <input id="input-sous-titre-1" type="text" class="validate input-sous-titre-1">
+                                <input id="input-sous-titre-1" name="input-sous-titre-1" type="text" class="validate input-sous-titre-1">
                                 <label for="input-sous-titre-1">Sous-titre</label>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="row cours-text-area">
                             
-                            <textarea id="cours-1" class="cours-1" name="story" cols="num" rows="num" placeholder="salut">Entrez votre courss...
+                            <textarea id="cours-1" class="cours-1" name="contenue-1" cols="num" rows="num" placeholder="salut">Entrez votre courss...
                                 
                             </textarea>
                             
@@ -73,6 +73,52 @@
         </div>
     </form>
 </main>
+<?php 
+    if(isset($_POST["submit"])){
+        $user_id = $_SESSION['id'];
+        $titre = $_POST['Titre-cours'];
+        $thematique_id = 0;
+        $requete1 = $bdd->prepare('INSERT INTO cours(titre_cours, utilisateur_id, thematique_id) VALUES (? , ? , ?)');
+        $requete1->execute(array($titre, $user_id, $thematique_id));
+
+        $recupID = $bdd->prepare('SELECT id_cours FROM cours WHERE titre_cours = ?, utilisateur_id = ?, thematique_id = ?');
+        $ID_cours = $recupID->execute(array($titre, $user_id, $thematique_id));
+        
+        echo $ID_cours;
+        $para = 1;
+        $name_sous_titre = "input-sous-titre-" . strval($para);
+        $contenue = "contenue-" . strval($para);
+
+        echo $name_sous_titre;
+        echo $contenue;
+
+
+        if(!empty($_POST[$name_sous_titre])){
+            
+            $titre_partie = $_POST[$name_sous_titre];
+            echo $ID_cours;
+            $partie_mere = 0;
+            $requete2 = $bdd->prepare('INSERT INTO partie(titre_partie, cours_id, partie_mere) VALUES (?, ?, ?)');
+            $requete2->execute(array($titre_partie, $ID_cours,$partie_mere));
+
+            $recupID_partie = $bdd->prepare('SELECT id_partie FROM partie WHERE titre_partie = ?, cours_id = ?, partie_mere = ?');
+            $ID_partie = $recupID_partie->execute(array($titre_partie, $ID_cours,$partie_mere));
+
+            $contenu_segment = $_POST[$contenue];
+
+            $requete3 = $bdd->prepare('INSERT INTO segment(contenu_segment, partie_id) VALUES (?, ?)');
+            $requete3->execute(array($contenu_segment, $ID_partie));
+
+
+            $para = $para + 1;
+            $name_sous_titre = "input-sous-titre-" . strval($para);
+            $contenue = "contenue-" . strval($para);
+        }
+
+        echo "<script> alert(\"Cours crée avec sucèes !\")</script>";
+    }
+
+?>
 
 <!-- Fin d'un fichier incluant les sources JS de materialize -->
-<?php include_once("../includes/fin_fichier.php"); ?>
+<?php include_once("../includes/footer.php"); ?>

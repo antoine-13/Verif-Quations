@@ -1,5 +1,5 @@
 <!--Entete de début du site - menu bleu -->
-<?php include_once("../includes/entete_debut.php"); ?>
+<?php include_once("../includes/header.php"); ?>
 
 
 
@@ -81,4 +81,4 @@
 
 
 <!-- Fin d'un fichier incluant les sources JS de materialize -->
-<?php include_once("../includes/fin_fichier.php"); ?>
+<?php include_once("../includes/footer.php"); ?>
