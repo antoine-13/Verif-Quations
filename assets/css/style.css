@@ -149,5 +149,23 @@ textarea {
   display: flex;
   justify-content: flex-end;
   left: 0px;
+  
   top: -20px;
+}
+
+
+/* delete animation */
+@-webkit-keyframes delete {
+  from { left: 0; display: block; }
+  to { left: 100; display: none; }
+}
+
+@-moz-keyframes delete {
+  from { left: 0; display: block; }
+  to { left: 100; display: none; }
+}
+
+@keyframes delete {
+  from { left: 0; display: block; }
+  to { left: 100; display: none; }
 }

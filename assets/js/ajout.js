@@ -75,10 +75,24 @@ function recupPara(id){
 
 function deletePara(id){
     var para = recupPara(id);
-    
     var div = document.querySelector(".paragraph-" + para);
-    div.parentNode.removeChild(div);
+    div.animate([
+        {transform: 'translateX(' + 0 + 'px'},
+        {transform: 'translateX('+ 10 + '%'},
+        {transform: 'translateX('+ 30 + '%'},
+        {transform: 'translateX('+ 60 + '%'},
+        {transform: 'translateX('+ 100 + '%'}
+        //...
+      ], {
+          duration: 500,
+          iterations: 1,
+          delay: 0
+      });
+    setTimeout(function(){ div.parentNode.removeChild(div); }, 500);
+    
+  
 }
+
 
 function modifPara(id){
     var para = recupPara(id);

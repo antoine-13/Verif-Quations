@@ -3,7 +3,7 @@
 
 <!-- PROGRAMMER ICI -->
 <main id="main">
-    <form method="POST" action="#">
+    <form method="POST" action="">
         <div class="row row-ajout-master-titre-cours">
             <div class="col s12 col-ajout-titre-cours z-depth-3">
                 <div class="row">
@@ -74,23 +74,30 @@
     </form>
 </main>
 <?php 
-    if(isset($_POST["submit"])){
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $user_id = $_SESSION['id'];
         $titre = $_POST['Titre-cours'];
         $thematique_id = 0;
-        $requete1 = $bdd->prepare('INSERT INTO cours(titre_cours, utilisateur_id, thematique_id) VALUES (? , ? , ?)');
-        $requete1->execute(array($titre, $user_id, $thematique_id));
-
-        $recupID = $bdd->prepare('SELECT id_cours FROM cours WHERE titre_cours = ?, utilisateur_id = ?, thematique_id = ?');
-        $ID_cours = $recupID->execute(array($titre, $user_id, $thematique_id));
+        echo $user_id;
+        echo $titre;
+        echo $thematique_id;
+        $requete1 = $bdd->prepare("INSERT INTO cours(titre_cours, utilisateur_id, thematique_id) VALUES(:titre , :user_id , :them_id)");
+        $requete1->bindParam(':titre', $titre);
+        $requete1->bindParam(':user_id', $user_id);
+        $requete1->bindParam(':them_id', $thematique_id);
+        $requete1->execute();
         
+        
+        /*$recupID = $bdd->prepare('SELECT SCOPE_IDENTITY()');
+        $ID_cours = $recupID->execute();
         echo $ID_cours;
+
+
         $para = 1;
         $name_sous_titre = "input-sous-titre-" . strval($para);
         $contenue = "contenue-" . strval($para);
 
-        echo $name_sous_titre;
-        echo $contenue;
+        
 
 
         if(!empty($_POST[$name_sous_titre])){
@@ -113,7 +120,7 @@
             $para = $para + 1;
             $name_sous_titre = "input-sous-titre-" . strval($para);
             $contenue = "contenue-" . strval($para);
-        }
+        }*/
 
         echo "<script> alert(\"Cours crée avec sucèes !\")</script>";
     }
