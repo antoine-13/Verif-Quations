@@ -58,8 +58,12 @@ function modifButton(string_para_prec, para_prec){
     div.parentNode.removeChild(div);
     document.querySelector(".paragraph-" + num_paragraph + " .input-sous-titre-" + para_prec).id = "input-sous-titre-" + num_paragraph;
     document.querySelector(".paragraph-" + num_paragraph + " .input-sous-titre-" + para_prec).value = "";
+    document.querySelector(".paragraph-" + num_paragraph + " .input-sous-titre-" + para_prec).name = "input-sous-titre-" + num_paragraph;
     document.querySelector(".paragraph-" + num_paragraph + " .input-sous-titre-" + para_prec).className = "validate input-sous-titre-" + num_paragraph;
     document.querySelector(".paragraph-" + num_paragraph + " textarea").value = "Entrez votre courss...";
+    document.querySelector(".paragraph-" + num_paragraph + " textarea").name = "contenue-" + num_paragraph;
+    document.querySelector(".paragraph-" + num_paragraph + " textarea").id = "cours-" + num_paragraph;
+    document.querySelector(".paragraph-" + num_paragraph + " textarea").className = "cours-" + num_paragraph;
     document.querySelector(".paragraph-" + num_paragraph + " label").setAttribute('for', "input-sous-titre-" + num_paragraph);
     document.querySelector(".paragraph-"+ num_paragraph + " .delete").id = "delete-paragraph-" + num_paragraph;
 
@@ -75,24 +79,10 @@ function recupPara(id){
 
 function deletePara(id){
     var para = recupPara(id);
-    var div = document.querySelector(".paragraph-" + para);
-    div.animate([
-        {transform: 'translateX(' + 0 + 'px'},
-        {transform: 'translateX('+ 10 + '%'},
-        {transform: 'translateX('+ 30 + '%'},
-        {transform: 'translateX('+ 60 + '%'},
-        {transform: 'translateX('+ 100 + '%'}
-        //...
-      ], {
-          duration: 500,
-          iterations: 1,
-          delay: 0
-      });
-    setTimeout(function(){ div.parentNode.removeChild(div); }, 500);
     
-  
+    var div = document.querySelector(".paragraph-" + para);
+    div.parentNode.removeChild(div);
 }
-
 
 function modifPara(id){
     var para = recupPara(id);
@@ -128,3 +118,4 @@ function validModif(id){
     document.querySelector(".paragraph-" + para + " .modif-div-" + para + " i").innerHTML = "edit";
 
 }
+

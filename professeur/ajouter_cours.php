@@ -78,9 +78,6 @@
         $user_id = $_SESSION['id'];
         $titre = $_POST['Titre-cours'];
         $thematique_id = 0;
-        echo $user_id;
-        echo $titre;
-        echo $thematique_id;
         $requete1 = $bdd->prepare("INSERT INTO cours(titre_cours, utilisateur_id, thematique_id) VALUES(:titre , :user_id , :them_id)");
         $requete1->bindParam(':titre', $titre);
         $requete1->bindParam(':user_id', $user_id);
@@ -88,39 +85,32 @@
         $requete1->execute();
         
         
-        /*$recupID = $bdd->prepare('SELECT SCOPE_IDENTITY()');
+        $recupID = $bdd->prepare('SELECT LAST_INSERT_ID() FROM cours');
         $ID_cours = $recupID->execute();
-        echo $ID_cours;
-
-
-        $para = 1;
-        $name_sous_titre = "input-sous-titre-" . strval($para);
-        $contenue = "contenue-" . strval($para);
-
         
 
-
-        if(!empty($_POST[$name_sous_titre])){
-            
-            $titre_partie = $_POST[$name_sous_titre];
-            echo $ID_cours;
-            $partie_mere = 0;
-            $requete2 = $bdd->prepare('INSERT INTO partie(titre_partie, cours_id, partie_mere) VALUES (?, ?, ?)');
-            $requete2->execute(array($titre_partie, $ID_cours,$partie_mere));
-
-            $recupID_partie = $bdd->prepare('SELECT id_partie FROM partie WHERE titre_partie = ?, cours_id = ?, partie_mere = ?');
-            $ID_partie = $recupID_partie->execute(array($titre_partie, $ID_cours,$partie_mere));
-
-            $contenu_segment = $_POST[$contenue];
-
-            $requete3 = $bdd->prepare('INSERT INTO segment(contenu_segment, partie_id) VALUES (?, ?)');
-            $requete3->execute(array($contenu_segment, $ID_partie));
+        for ($i = 1; $i <= 10; $i++) {
+            $name_sous_titre = "input-sous-titre-" . strval($i);
+            $contenue = "contenue-" . strval($i);
 
 
-            $para = $para + 1;
-            $name_sous_titre = "input-sous-titre-" . strval($para);
-            $contenue = "contenue-" . strval($para);
-        }*/
+            if(!empty($_POST[$name_sous_titre])){
+                echo "test";
+                $titre_partie = $_POST[$name_sous_titre];
+                $partie_mere = 0;
+                $requete2 = $bdd->prepare('INSERT INTO partie(titre_partie, cours_id, partie_mere) VALUES (?, ?, ?)');
+                $requete2->execute(array($titre_partie, $ID_cours,$partie_mere));
+
+                $recupID_partie = $bdd->prepare('SELECT LAST_INSERT_ID() FROM cours');
+                $ID_partie = $recupID_partie->execute();
+
+                $contenu_segment = $_POST[$contenue];
+
+                $requete3 = $bdd->prepare('INSERT INTO segment(contenu_segment, partie_id) VALUES (?, ?)');
+                $requete3->execute(array($contenu_segment, $ID_partie));
+
+            }
+        }
 
         echo "<script> alert(\"Cours crée avec sucèes !\")</script>";
     }
