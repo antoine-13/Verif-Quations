@@ -1,85 +1,57 @@
-<!--Entete de début du site - menu bleu -->
+<!-- include de l'entete -->
+<?php include_once("includes/front/entete.php"); ?>
+
+	<main class="main-index">
+		<div class="connect-form-div">
+			<form action="" method="POST">
+				<div class=form-logo>
+					<div class="logo"><img src="assets/img/logo open innov.png" alt=""></div>
+				</div>
+				
+				<div class="div-input">
+					<span>Utilisateur</span>
+					<div class="input">
+						<span><i class="fas fa-user"></i></span>
+						<input type="text" name="username" placeholder="Nom d'utilisateur" id="username"></input>
+					</div>
+				</div>
+				<div class="div-input">
+					<span>Mot de passe</span>
+					<div class="input">
+						<span><i class="fas fa-key"></i></span>
+						<input type="password" name="password" placeholder="Mot de passe"></input>
+					</div>
+					<div class="forgot-mdp">
+						<a href="">Mot de passe oublié ?</a>
+					</div>
+				</div>
+				<div class="remember">
+					<input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Se souvenir de moi</label></input>
+				</div>
+				<div class="valid-form">
+					<button type="submit" name="submit">Connexion</button>
+				</div>
+			</form>
+		</div>
+	</main>
+
 <?php 
-include_once("includes/header.php");
-if(isset($_SESSION["type"]))
-{
-    if($_SESSION["type"] == "1")
-    {
-        header("location: eleve/tester_son_equation.php");
-    }
-    else if($_SESSION["type"] == "2")
-    {
-        header("location: professeur/message_eleve.php");
-    }
+if($_SERVER['REQUEST_METHOD'] = 'POST'){
+	if(!empty($_POST['password']) && !empty($_POST['username'])){
+		if($_POST['password'] == 'etudiant' and $_POST['username'] == 'etudiant'){ 
+			$_SESSION["type"] = "etudiant";
+			header('location: /aprenant/accueil.php');
+			
+		}
+		elseif($_POST['password'] == 'professeur' and $_POST['username'] == 'professeur'){
+			$_SESSION["type"] = "professeur";
+			header('location: /professeur/accueil.php');
+		}
+	}
+
 }
 ?>
 
-<!-- PROGRAMMER ICI -->
+<!-- include de la fin du fichier -->
+<?php include_once("includes/front/fin.php"); ?>
 
-<div class="section container">
-    <div class="row">
-        <div class="col l3 m2 s12"></div>
-        <div class="col l6 m8 s12">
-            <div class="card-panel z-depth-5">
-                <form action="" method="POST">
-                    <h2 class="center" style="margin-top: 0;">Connexion</h2>
-                    <div class="input-field">
-                        <i class="material-icons prefix">person</i>
-                        <input type="text" placeholder="Identifiant" name="login" focus class="validate">
-                    </div>
-                    <div class="input-field">
-                        <i class="material-icons prefix">lock</i>
-                        <input type="password" placeholder="mot de passe" name="mdp" class="validate">
-                    </div>
-                    <p>
-                        <label>
-                            <input type="checkbox" name="login_checkbox">
-                            <span>Se souvenir de moi</span>
-                        </label>
-                    </p>
-                    <input type="submit" name="formlogin" value="Se connecter" class="btn blue left col s12">
-                    <p class="left">Ëtes-vous nouveau? <a href="inscription.php" class="blue-text">Inscripton</a></p>
-                    <p class="right"><a class="blue-text" href="#">Mot de passe oublié?</a></p>
-                    <div class="clearfix"></div>
-                </form>
-            
-                <?php
-                    //Si le formulaire a été rempli
-                    if(isset($_POST["login"]))
-                    {
-                        $requete = $bdd->prepare("SELECT * FROM utilisateur WHERE login_utilisateur=:login");
-                            $requete->bindParam(':login', $_POST["login"]);
-                            // exécute
-                            $requete->execute();
-                            $data=$requete->fetch();
-
-                            if (md5($_POST["mdp"]) == $data['mdp_utilisateur'])
-                            {
-                                $_SESSION["login"] = $_POST["login"];
-                                $_SESSION["mdp"] = $_POST["mdp"];
-                                $_SESSION["type"] = $data['type_id'];
-                                $_SESSION["id"] = $data['id_utilisateur'];
-                                if($_SESSION["type"] == "1")
-                                {
-                                    header("location: eleve/tester_son_equation.php");
-                                }
-                                else if($_SESSION["type"] == "2")
-                                {
-                                    header("location: professeur/message_eleve.php");
-                                }
-                            }
-                            else
-                            {
-                                echo "<p style='color:red;'>Erreur, veuillez vérifier vos identifiants</p>";
-                            }
-                    }
-                ?>
-
-            </div>
-        </div>
-        <div class="col l3 m2 s12"></div>
-    </div>
-</div>
-
-<!-- Fin d'un fichier incluant les sources JS de materialize -->
-<?php include_once("includes/footer.php"); ?>
